@@ -1,0 +1,15 @@
+Package: autochart
+Type: Package
+Title: An Automatic Plotting Function
+Version: 1.0.0
+Author: Arman Mahmud
+Maintainer: Arman Mahmud <armanmahmud.du18@gmail.com>
+Description: A package that automatically generates plots based on variable types.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+Imports:
+    ggplot2,
+    readxl
+RoxygenNote: 7.3.2
