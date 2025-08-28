@@ -9,6 +9,14 @@ This function reads a .csv or .xlsx file, and automatically generates a chart (s
 devtools::install_github("armanmahmud1/autochart")
 library(autochart)
 ```
+```
+install.packages("ggplot2")
+library(ggplot2)
+```
+```
+install.packages("readxl")
+library(readxl)
+```
 ## Example code
 ```
 autochart("D:/package_test/practice_clean.xlsx","resp_id", "work_h")
