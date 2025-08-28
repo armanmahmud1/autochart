@@ -31,6 +31,9 @@ autochart("D:/package_test/practice_clean.xlsx","resp_id", "work_h")
 4. The input data file must include the specified variables required for plot generation.
 5. If an error occurs, please refer to the error message for guidance.
 
+## Issues
+For any issues, report: https://github.com/armanmahmud1/autochart/issues
+
 ## Author
 Arman Mahmud, <br>
 Email: armanmahmud.du18@gmail.com, <br>
