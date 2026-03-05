@@ -1,0 +1,108 @@
+# Test script for autochart package
+# Save this as test_autochart.R and run it with Rscript test_autochart.R
+
+# Install required packages
+install.packages(c("ggplot2", "readxl", "haven", "feather", "jsonlite", "arrow"))
+
+# Install autochart from GitHub
+devtools::install_github("armanmahmud1/autochart")
+
+# Load packages
+library(autochart)
+
+# Test with different file formats
+cat("\n=== Testing autochart with different file formats ===\n")
+
+# Test 1: CSV file
+tryCatch({
+  cat("\n1. Testing CSV file...\n")
+  # Create sample CSV data
+  write.csv(data.frame(resp_id = 1:5, work_h = c(2, 3, 4, 5, 6)), "test_data.csv", row.names = FALSE)
+
+  # Run autochart
+  result_csv <- autochart("test_data.csv", "resp_id", "work_h")
+  cat("CSV test completed successfully!\n")
+}, error = function(e) {
+  cat("CSV test failed: ", e$message, "\n")
+})
+
+# Test 2: Excel file
+tryCatch({
+  cat("\n2. Testing Excel file...\n")
+  # Create sample Excel data
+  library(readxl)
+  df <- data.frame(resp_id = letters[1:5], work_h = c(2, 3, 4, 5, 6))
+  writexl::write_xlsx(list(data = df), "test_data.xlsx")
+
+  # Run autochart
+  result_xlsx <- autochart("test_data.xlsx", "resp_id", "work_h")
+  cat("Excel test completed successfully!\n")
+}, error = function(e) {
+  cat("Excel test failed: ", e$message, "\n")
+})
+
+# Test 3: JSON file
+tryCatch({
+  cat("\n3. Testing JSON file...\n")
+  # Create sample JSON data
+  library(jsonlite)
+  json_data <- toJSON(list(data = list(resp_id = 1:5, work_h = c(2, 3, 4, 5, 6))))
+  write(json_data, "test_data.json")
+
+  # Run autochart
+  result_json <- autochart("test_data.json", "resp_id", "work_h")
+  cat("JSON test completed successfully!\n")
+}, error = function(e) {
+  cat("JSON test failed: ", e$message, "\n")
+})
+
+# Test 4: Feather file
+tryCatch({
+  cat("\n4. Testing Feather file...\n")
+  # Create sample Feather data
+  library(feather)
+  df <- data.frame(resp_id = letters[1:5], work_h = c(2, 3, 4, 5, 6))
+  write_feather(df, "test_data.feather")
+
+  # Run autochart
+  result_feather <- autochart("test_data.feather", "resp_id", "work_h")
+  cat("Feather test completed successfully!\n")
+}, error = function(e) {
+  cat("Feather test failed: ", e$message, "\n")
+})
+
+# Test 5: Parquet file
+tryCatch({
+  cat("\n5. Testing Parquet file...\n")
+  # Create sample Parquet data
+  library(arrow)
+  df <- data.frame(resp_id = letters[1:5], work_h = c(2, 3, 4, 5, 6))
+  write_parquet(df, "test_data.parquet")
+
+  # Run autochart
+  result_parquet <- autochart("test_data.parquet", "resp_id", "work_h")
+  cat("Parquet test completed successfully!\n")
+}, error = function(e) {
+  cat("Parquet test failed: ", e$message, "\n")
+})
+
+# Test 6: Stata file
+tryCatch({
+  cat("\n6. Testing Stata file...\n")
+  # Create sample Stata data
+  library(haven)
+  df <- data.frame(resp_id = 1:5, work_h = c(2, 3, 4, 5, 6))
+  write_dta(df, "test_data.dta")
+
+  # Run autochart
+  result_dta <- autochart("test_data.dta", "resp_id", "work_h")
+  cat("Stata test completed successfully!\n")
+}, error = function(e) {
+  cat("Stata test failed: ", e$message, "\n")
+})
+
+cat("\n=== All tests completed ===\n")
+
+# Clean up test files
+unlink(c("test_data.csv", "test_data.xlsx", "test_data.json", "test_data.feather", "test_data.parquet", "test_data.dta"))
+cat("Test files cleaned up.\n")
