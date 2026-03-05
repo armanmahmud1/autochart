@@ -11,5 +11,9 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 Imports:
     ggplot2,
-    readxl
+    readxl,
+    haven,
+    feather,
+    jsonlite,
+    arrow
 RoxygenNote: 7.3.2

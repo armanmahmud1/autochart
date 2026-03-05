@@ -41,7 +41,7 @@ autochart <- function(file_path, x_var, y_var) {
   }
 
 
-  # file load (only .xlsx and .csv)
+  # file load (multiple formats)
   if (grepl("\\.csv$", file_path, ignore.case = TRUE)) {
     data <- read.csv(file_path, stringsAsFactors = FALSE)
   }
@@ -50,8 +50,32 @@ autochart <- function(file_path, x_var, y_var) {
       stop("The 'readxl' package is required for .xlsx files. Please install it using install.packages('readxl').")
     }
     data <- readxl::read_excel(file_path)
+  }
+  else if (grepl("\\.dta$", file_path, ignore.case = TRUE)) {
+    if (!requireNamespace("haven", quietly = TRUE)) {
+      stop("The 'haven' package is required for .dta files. Please install it using install.packages('haven').")
+    }
+    data <- haven::read_dta(file_path)
+  }
+  else if (grepl("\\.parquet$", file_path, ignore.case = TRUE)) {
+    if (!requireNamespace("arrow", quietly = TRUE)) {
+      stop("The 'arrow' package is required for .parquet files. Please install it using install.packages('arrow').")
+    }
+    data <- arrow::read_parquet(file_path)
+  }
+  else if (grepl("\\.feather$", file_path, ignore.case = TRUE)) {
+    if (!requireNamespace("feather", quietly = TRUE)) {
+      stop("The 'feather' package is required for .feather files. Please install it using install.packages('feather').")
+    }
+    data <- feather::read_feather(file_path)
+  }
+  else if (grepl("\\.json$", file_path, ignore.case = TRUE)) {
+    if (!requireNamespace("jsonlite", quietly = TRUE)) {
+      stop("The 'jsonlite' package is required for .json files. Please install it using install.packages('jsonlite').")
+    }
+    data <- jsonlite::fromJSON(file_path)
   } else {
-    stop("Unsupported file type. This function only supports .csv and .xlsx files.")
+    stop("Unsupported file type. This function supports .csv, .xlsx, .dta, .parquet, .feather, and .json files.")
   }
 
 

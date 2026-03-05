@@ -25,8 +25,8 @@ autochart("D:/package_test/practice_clean.xlsx","resp_id", "work_h")
 ?autochart
 ```
 ## Instructions
-1. Before using this package, please ensure that the ggplot2 and readxl packages are installed.
-2. Currently, it supports only .xlsx and .csv file formats. Other formats are not yet supported and are under development.
+1. Before using this package, please ensure that the ggplot2, readxl, haven, feather, jsonlite, and arrow packages are installed.
+2. Currently, it supports .csv, .xlsx, .dta, .parquet, .feather, and .json file formats.
 3. Based on the type of variables provided, the package can generate scatter plots, bar plots, or stacked bar plots.
 4. The input data file must include the specified variables required for plot generation.
 5. If an error occurs, please refer to the error message for guidance.
