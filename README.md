@@ -10,12 +10,13 @@ devtools::install_github("armanmahmud1/autochart")
 library(autochart)
 ```
 ```
-install.packages("ggplot2")
+install.packages(c("ggplot2", "readxl", "haven", "feather", "jsonlite", "arrow"))
 library(ggplot2)
-```
-```
-install.packages("readxl")
 library(readxl)
+library(haven)
+library(feather)
+library(jsonlite)
+library(arrow)
 ```
 ## Example code
 ```
