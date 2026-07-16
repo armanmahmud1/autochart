@@ -36,6 +36,6 @@ autochart("D:/package_test/practice_clean.xlsx","resp_id", "work_h")
 For any issues, report: https://github.com/armanmahmud1/autochart/issues
 
 ## Author
-Arman Mahmud, <br>
-Email: armanmahmud.du18@gmail.com, <br>
-Web: https://sites.google.com/view/armanmahmud1
+Arman Mahmud </br>
+Email: armanmahmud.du18@gmail.com </br>
+Web: [arman-mahmud.com](https://www.arman-mahmud.com)
